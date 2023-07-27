@@ -31,7 +31,7 @@ const Details: FunctionComponent = (props: any) => {
     }
     // Clean up the event listener when the component unmounts
     return () => {
-      projectContainerRef.current.removeEventListener("wheel", handleWheel);
+      projectContainerRef?.current?.removeEventListener("wheel", handleWheel);
     };
   }, [projectContainerRef.current]);
 
