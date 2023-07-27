@@ -1,0 +1,18 @@
+.filterButtonDisable{
+    background: #E1E1E1 !important;
+    border: none;
+    color: #515151;
+}
+
+.filterButtonDisable svg{
+    opacity: 0.5;
+}
+
+.filterButtonDisable span{
+    color: #515151;
+}
+
+
+.filterSelected{
+    background: #D0E3FF !important;
+}

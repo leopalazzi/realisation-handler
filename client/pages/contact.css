@@ -1,0 +1,18 @@
+.checkboxContact {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  border: 2px solid #a0a0a0;
+  border-radius: 4px;
+}
+
+input[type="checkbox"]:checked {
+  appearance: auto;
+}
+
+.checkboxDiv{
+    display: grid;
+    grid-template-columns: 20px 1fr;
+}
