@@ -5,14 +5,6 @@ import { ToastContainer } from "react-toastify";
 import { projectsConfig } from "../config/projectsConfig";
 import { useEffect, useRef, useState } from "react";
 import { ContextApp } from "../context/Context/Context";
-import { Roboto } from 'next/font/google'
- 
-const roboto = Roboto({
-  weight: ['300', '500', '700'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  display: 'swap',
-})
 
 const App = ({ Component, pageProps }: any) => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
@@ -63,7 +55,7 @@ const App = ({ Component, pageProps }: any) => {
           setProjectsList,
         }}
       >
-        <main className={roboto.className + " lg:px-[64px] px-[16px] pb-[120px]"}>
+        <main className={" lg:px-[64px] px-[16px] pb-[120px]"}>
           <Component {...pageProps} initialProjectList={initialProjectList} />
         </main>
       </ContextApp.Provider>

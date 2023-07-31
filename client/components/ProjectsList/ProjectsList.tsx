@@ -23,7 +23,7 @@ const ProjectsList = (props: any) => {
         id="listProjects"
         ref={containerRef}
       >
-        {projectsList.map((project) => {
+        {projectsList.map((project, index) => {
           const widthImg = isDesktop ? "325px" : "175px";
           return (
             project.images?.[0] && (
@@ -34,13 +34,17 @@ const ProjectsList = (props: any) => {
                   onClickImage(event, project.id);
                 }}
                 href={`${process.env.NEXT_PUBLIC_BASE_URL}/${project.id}/details`}
+                key={`${project.projectTitle} - Details`}
+                title={`Lien vers ${project.projectTitle} de ${project.projectDirector}`}
               >
                 <img
                   src={`/projects/${project.projectDirectory}/${project.images[0]}`}
                   style={{ width: widthImg, height: "200px" }}
+                  alt={`Image du projet ${project.projectTitle}`}
+                  loading={index <= 6 ? "eager": "lazy"}
                 />
                 <div className="smooth-opacity block lg:hidden cursor-pointer absolute bottom-0 px-[12px] py-[16px] group-hover:block">
-                  <div className="imgTitleContainer">
+                  <div className="w-[100%] text-[14px] lg:hidden group-hover:block">
                     <div className="text-white font-medium mb-1 leading-[14px]">
                       {project.projectTitle}
                     </div>

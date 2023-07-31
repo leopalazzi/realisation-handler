@@ -2,7 +2,8 @@ import { useState } from "react";
 import Image from "next/image";
 
 const ImageCompponent = (props: any) => {
-  const { src, alt, height, onClick, className, width, loading } = props;
+  const { src, alt, height, onClick, className, width, loading, priority } =
+    props;
   const [isLoaded, setIsLoaded] = useState(false);
   return (
     <>
@@ -12,7 +13,7 @@ const ImageCompponent = (props: any) => {
           style={{ width: `${width}px`, height: `${height}px` }}
         ></div>
       )}
-      {
+      <div className={"image-container"}>
         <Image
           src={src}
           onLoad={() => setIsLoaded(true)}
@@ -20,11 +21,12 @@ const ImageCompponent = (props: any) => {
           alt={alt}
           className={`image ${className ? className : ""}`}
           onClick={onClick}
-          height={height}
-          width={width}
           loading={loading}
+          fill={true}
+          sizes="(max-width: 768px)"
+          priority={priority}
         />
-      }
+      </div>
     </>
   );
 };

@@ -39,6 +39,7 @@ const RealisationsImage = (props: any) => {
                 const heightImage = Math.round(
                   parseInt(project.imageHeight, 10) / imageRatio
                 );
+                const percentageHeightScreen = heightImage / document.documentElement.clientHeight * 100
                 return (
                   project.images?.[0] && (
                     <a
@@ -54,7 +55,8 @@ const RealisationsImage = (props: any) => {
                         alt={`${project.projectTitle} - Image 1`}
                         height={isNaN(heightImage) ? 200 : `${heightImage}`}
                         width={columnWidth}
-                        loading={(colIndex === 1 || colIndex === 3) ? "lazy" : "eager" }
+                        priority={percentageHeightScreen > 20 ? true : false }
+
                       />
                       <div className="imgInfos smooth-opacity">
                         <div className="filtersContainer">

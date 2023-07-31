@@ -10,8 +10,11 @@ import BackIcon from "@/components/Icons/BackIcon";
 import ImagesSlider from "@/components/ImagesSlider/ImagesSlider";
 import Head from "next/head";
 import ProjectsList from "@/components/ProjectsList/ProjectsList";
+import ImageCompponent from "@/components/Image/Image";
+import { useResponsiveDetect } from "@/hooks/useResponsiveDetect";
 
 const Details: FunctionComponent = (props: any) => {
+  const { isDesktop } = useResponsiveDetect();
   const [imageClickedIndex, setImageClickedIndex] = useState(null);
   const { projectsList } = useContext(ContextApp) as ContextType;
   const router = useRouter();
@@ -25,8 +28,7 @@ const Details: FunctionComponent = (props: any) => {
   const projectContainerRef = useRef(null);
 
   useEffect(() => {
-    if(projectContainerRef.current)
-    {
+    if (projectContainerRef.current) {
       projectContainerRef.current.addEventListener("wheel", handleWheel);
     }
     // Clean up the event listener when the component unmounts
@@ -34,7 +36,6 @@ const Details: FunctionComponent = (props: any) => {
       projectContainerRef?.current?.removeEventListener("wheel", handleWheel);
     };
   }, [projectContainerRef.current]);
-
 
   useEffect(() => {
     if (imageClickedIndex !== null) {
@@ -175,14 +176,26 @@ const Details: FunctionComponent = (props: any) => {
         </div>
         <div className="grid-cols-2 grid gap-2 items-center mb-[40px]">
           {currentProject.images?.map((imagePath: string, index: number) => {
+            const padding = isDesktop ? 128 : 32;
+            const numberColumn = 2;
+            const columnWidth =
+              (document.documentElement.clientWidth - padding) / numberColumn -
+              8;
+            const imageRatio =
+              parseInt(currentProject.imageWidth, 10) / columnWidth;
+            const heightImage = Math.round(
+              parseInt(currentProject.imageHeight, 10) / imageRatio
+            );
             return (
-              <img
+              <ImageCompponent
                 key={`${imagePath}-${index}`}
                 src={`/projects/${currentProject.projectDirectory}/${imagePath}`}
-                height={currentProject.imageHeight}
                 alt={`Image du projet ${currentProject.projectTitle} - ${index}`}
                 onClick={() => onImageClick(index)}
+                width={columnWidth}
+                height={heightImage}
                 className="cursor-zoom-in image"
+                priority={index <= 3 ? true : false}
               />
             );
           })}
@@ -199,7 +212,10 @@ const Details: FunctionComponent = (props: any) => {
           nomination={nomination}
           videoLink={videoLink}
         />
-        <ProjectsList projectsList={projectsList} containerRef={projectContainerRef} />
+        <ProjectsList
+          projectsList={projectsList}
+          containerRef={projectContainerRef}
+        />
       </div>
     </div>
   );
