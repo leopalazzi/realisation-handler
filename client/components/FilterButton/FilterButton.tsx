@@ -1,24 +1,16 @@
-import EtalonnageIcon from "../Icons/EtalonnageIcon";
-import ImageIcon from "../Icons/ImageIcon";
-import PhotographieIcon from "../Icons/PhotographieIcon";
-import RealisationIcon from "../Icons/RealisationIcon";
-
 const FitlerButton = (props: any) => {
   const { label, ariaLabel, onClick, textColor, disabled, isSelected, code } =
     props;
   let icon;
   switch (code) {
     case "image":
-      icon = <ImageIcon />;
+      icon = <div className="rounded-[40px] bg-[#40BCF4] w-[16px] h-[16px]"></div>;
       break;
     case "etalonnage":
-      icon = <EtalonnageIcon />;
+      icon = <div className="rounded-[40px] bg-[#00E054] w-[16px] h-[16px]"></div>;
       break;
     case "realisation":
-      icon = <RealisationIcon />;
-      break;
-    case "photographie":
-      icon = <PhotographieIcon />;
+      icon = <div className="rounded-[40px] bg-[#FF8000] w-[16px] h-[16px]"></div>;
       break;
     default:
       break;

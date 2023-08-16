@@ -23,20 +23,17 @@ const RealisationsTable = (props: any) => {
     }
   };
 
-  const returnCorrectIcon = (filterCode: string, greyed?: boolean) => {
+  const returnCorrectIcon = (filterCode: string) => {
     let icon;
     switch (filterCode) {
       case "image":
-        icon = <ImageIcon key={filterCode} greyed={greyed} />;
+        icon = <div className="rounded-[40px] bg-[#40BCF4] w-[16px] h-[16px]"></div>;
         break;
       case "etalonnage":
-        icon = <EtalonnageIcon key={filterCode} greyed={greyed} />;
+        icon = <div className="rounded-[40px] bg-[#00E054] w-[16px] h-[16px]"></div>;
         break;
       case "realisation":
-        icon = <RealisationIcon key={filterCode} greyed={greyed} />;
-        break;
-      case "photographie":
-        icon = <PhotographieIcon key={filterCode} greyed={greyed} />;
+        icon = <div className="rounded-[40px] bg-[#FF8000] w-[16px] h-[16px]"></div>;
         break;
       default:
         break;
@@ -54,8 +51,6 @@ const RealisationsTable = (props: any) => {
         );
         if (filterInProject) {
           icons.push(returnCorrectIcon(code));
-        } else {
-          icons.push(returnCorrectIcon(code, true));
         }
       }
     });
