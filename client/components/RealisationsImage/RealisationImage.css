@@ -35,10 +35,18 @@
     justify-content: space-between;
     padding: 24px 16px;
   }
+
+  .filtersContainer{
+    display: flex;
+  }
+
+  .imgTitleContainer{
+    display: block;
+  }
 }
 
 .filtersContainer {
-  display: flex;
+  display: none;
   gap: 4px;
   height: fit-content;
   flex-wrap: wrap;
@@ -46,6 +54,7 @@
 }
 
 .imgTitleContainer {
+  display: none;
   font-size: 14px;
   width: 100%;
 }
@@ -90,5 +99,5 @@
 }
 
 .smooth-opacity {
-  animation: fadeIn 0.3s ease-in forwards;
+  animation: fadeIn 0.3s ease-in backwards;
 }
