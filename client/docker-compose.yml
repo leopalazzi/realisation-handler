@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    image: leopalazzi/realisation-handler-front
+    image: leopalazzi/realisation-handler-front:realisation-handler-front
     ports:
       - 80:80
     networks:
