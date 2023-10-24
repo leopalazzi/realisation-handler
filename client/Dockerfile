@@ -60,6 +60,7 @@ EXPOSE 443
 
 ENV PORT 443
 # set hostname to localhost
-#ENV HOSTNAME "0.0.0.0"
+
+ENV HOSTNAME "0.0.0.0"
 
 CMD ["node", "server.js"]
