@@ -25,6 +25,7 @@ const ImageCompponent = (props: any) => {
           fill={true}
           sizes="(max-width: 768px)"
           priority={priority}
+          unoptimized
         />
       </div>
     </>
