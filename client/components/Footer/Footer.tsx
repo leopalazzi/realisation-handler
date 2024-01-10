@@ -31,14 +31,6 @@ const Footer = () => {
           </a>
           <a
             className="border-[#D3D3D3] border px-[24px] py-[8px] rounded-[60px] bg-white"
-            title="Lien vers Tumblr"
-            target="_blank"
-            href="https://google.com"
-          >
-            Tumblr
-          </a>
-          <a
-            className="border-[#D3D3D3] border px-[24px] py-[8px] rounded-[60px] bg-white"
             title="Lien vers IMDb"
             target="_blank"
             href="https://google.com"
@@ -48,7 +40,7 @@ const Footer = () => {
         </div>
       </div>
       <span className="mt-[24px] max-sm:text-center font-light">
-        Designed and developped by BubbleWeb
+        Designed and developped by LP & RF
       </span>
     </footer>
   );

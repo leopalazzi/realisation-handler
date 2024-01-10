@@ -38,7 +38,8 @@ const Details: FunctionComponent = (props: any) => {
   }, [projectContainerRef.current]);
 
   useEffect(() => {
-    if (imageClickedIndex !== null) {
+    if(document)
+    {    if (imageClickedIndex !== null) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset"; // Enable scrolling when image is closed
@@ -48,6 +49,9 @@ const Details: FunctionComponent = (props: any) => {
     return () => {
       document.body.style.overflow = "unset";
     };
+
+    }
+
   }, [imageClickedIndex]);
 
   const onMouseMouve = (event) => {
@@ -211,10 +215,6 @@ const Details: FunctionComponent = (props: any) => {
           photographerName={photographerName}
           nomination={nomination}
           videoLink={videoLink}
-        />
-        <ProjectsList
-          projectsList={projectsList}
-          containerRef={projectContainerRef}
         />
       </div>
     </div>

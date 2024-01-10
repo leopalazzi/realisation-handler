@@ -8,14 +8,18 @@ const BIGSCREEN = { min: 1400 };
 export const isClientSide = () => typeof window !== "undefined";
 
 export const getWindowWidth = () => {
-  if (!isClientSide()) {
+  if (!isClientSide() || !document) {
     return 0;
   }
+  if(document)
+  {
+    const e = document.documentElement;
+    const g = document.getElementsByTagName("body")[0];
+  
+    return e.clientWidth || window.innerWidth || g.clientWidth;
+  }
 
-  const e = document.documentElement;
-  const g = document.getElementsByTagName("body")[0];
 
-  return e.clientWidth || window.innerWidth || g.clientWidth;
 };
 
 const getWindowDimensions = () => {

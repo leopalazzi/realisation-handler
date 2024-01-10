@@ -25,11 +25,11 @@ const DetailsBlock = (props: any) => {
           </span>
         )}
         <span>
-          Réalisation : <span className="font-medium">{director}</span>
+          Réal : <span className="font-medium">{director}</span>
         </span>
         {producer && (
           <span>
-            Producteur : <span className="font-medium">{producer}</span>
+            Prod : <span className="font-medium">{producer}</span>
           </span>
         )}
         {camera && (
@@ -44,7 +44,7 @@ const DetailsBlock = (props: any) => {
         )}
         {nomination && (
           <span>
-            Selection : <span className="font-medium">{nomination}</span>
+            Sélections / Prix : <span className="font-medium">{nomination}</span>
           </span>
         )}
         {videoLink && (

@@ -18,21 +18,23 @@ export default function Home(props: any) {
     useContext(ContextApp) as ContextType;
   const [maxImages, setMaxImages] = useState(16);
   const [btnClicked, setBtnClicked] = useState("mosaicView");
-  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const { isDesktop, isMobile } = useResponsiveDetect();
 
   const onClickMoreResults = () => {
-    if (maxImages + 16 > projectsConfig.length) {
-      setMaxImages(projectsConfig.length);
+    if (maxImages + 16 > projectsList.length) {
+      setMaxImages(projectsList.length);
     } else {
       setMaxImages(maxImages + 16);
     }
   };
 
   const onClickFilter = (filterCode: string) => {
+    console.log("filter", filterCode)
     if (selectedFilters.includes(filterCode)) {
       setSelectedFilters((prevFilters: string[]) =>
-        prevFilters.filter((filter) => filter !== filterCode)
+      {
+        return  prevFilters.filter((filter) => filter !== filterCode)
+      }
       );
     } else {
       setSelectedFilters((prevFilters) => [...prevFilters, filterCode]);
@@ -40,13 +42,11 @@ export default function Home(props: any) {
   };
 
   useEffect(() => {
-    if (selectedFilters.length !== 0) {
       setProjectsList(() => {
         return initialProjectList.current.filter((project: any) =>
           selectedFilters.every((filter) => project.filters?.includes(filter))
         );
       });
-    }
   }, [selectedFilters]);
 
   useEffect(() => {
@@ -76,38 +76,19 @@ export default function Home(props: any) {
           // }}
         />
       </Head>
-      <div>
-        <h1 className="mb-2">Réalisations</h1>
-        <div className="border"></div>
-      </div>
       <div className="flex flex-row gap-6 items-center justify-between">
         <div className="flex justify-center items-center">
-          {!isMobile && (
-            <Button
-              onClick={() => setIsFiltersOpen(!isFiltersOpen)}
-              active={isFiltersOpen}
-              label="Filtres"
-              type="button"
-              ariaLabel="Filtres des projets"
-            >
-              <FitlerIcon />
-            </Button>
-          )}
-          {(isFiltersOpen || isMobile) && (
             <FiltersList onClickFilter={onClickFilter} />
-          )}
         </div>
         {isDesktop && (
           <ButtonBlock setBtnClicked={setBtnClicked} btnClicked={btnClicked} />
         )}
       </div>
       {btnClicked === "mosaicView" ? (
-        <Suspense fallback={<p>Loading feed...</p>}>
           <RealisationsImage
             projectsList={projectsList}
             maxImages={maxImages}
           />
-        </Suspense>
       ) : (
         <RealisationsTable projectsList={projectsList} />
       )}

@@ -9,6 +9,7 @@ const handler: NextApiHandler = (req, res) => {
     try {
       const fileNames: string[] = fs.readdirSync(publicDirectoryPath);
       projectsList[index].images = fileNames;
+      // console.log(projectDirectory, fileNames)
     } catch (error) {}
   });
   res.status(200).json(projectsList);

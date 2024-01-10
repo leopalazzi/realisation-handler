@@ -32,8 +32,8 @@ const RealisationsImage = (props: any) => {
               {column.map((project: any, rowIndex: number) => {
                 const padding = isDesktop ? 128 : 32;
                 const numberColumn = isDesktop ? 4 : 2;
-                const columnWidth =
-                  ((document.documentElement.clientWidth - padding) / numberColumn) - 8;
+                  const columnWidth =
+                  ((window.document.documentElement.clientWidth - padding) / numberColumn) - 8;
                 const imageRatio =
                   parseInt(project.imageWidth, 10) / columnWidth;
                 const heightImage = Math.round(

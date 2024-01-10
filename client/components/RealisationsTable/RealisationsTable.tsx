@@ -64,7 +64,7 @@ const RealisationsTable = (props: any) => {
           <tr>
             <th className="sticky top-0 py-[16px]">Année</th>
             <th className="sticky top-0 py-[16px]">Titre</th>
-            <th className="sticky top-0 py-[16px]">Realisateur</th>
+            <th className="sticky top-0 py-[16px]">Real</th>
             <th className="sticky top-0 py-[16px]">Prod</th>
             <th className="sticky top-0 py-[16px]">Caméra</th>
             <th className="sticky top-0 py-[16px]">Filtres</th>

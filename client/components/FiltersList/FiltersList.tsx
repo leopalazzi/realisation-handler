@@ -3,15 +3,13 @@ import filtersConfig from "../../config/filtersConfig";
 import { ContextApp } from "../../context/Context/Context";
 import { ContextType } from "@/context/Context/ContextType";
 import FitlerButton from "../FilterButton/FilterButton";
-import { useResponsiveDetect } from "@/hooks/useResponsiveDetect";
 
 const FiltersList = (props: any) => {
   const { onClickFilter } = props;
   const { selectedFilters } = useContext(ContextApp) as ContextType;
-  const { isDesktop } = useResponsiveDetect();
 
   return (
-    <div className={`flex gap-4 flex-wrap ${isDesktop ? "slide-right" : ""}`}>
+    <div className={`flex gap-4 flex-wrap`}>
       {filtersConfig.map((filter) => {
         const isSelected = selectedFilters.includes(filter.code);
         return (

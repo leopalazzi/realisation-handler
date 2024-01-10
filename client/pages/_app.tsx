@@ -8,41 +8,44 @@ import { ContextApp } from "../context/Context/Context";
 
 const App = ({ Component, pageProps }: any) => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-  const [projectsList, setProjectsList] = useState(projectsConfig);
-  const initialProjectList = useRef();
+  const [projectsList, setProjectsList] = useState([]);
+  const initialProjectList = useRef([]);
 
   useEffect(() => {
+    setProjectsList(projectsConfig);
+    initialProjectList.current = projectsConfig;
+
     async function fetchFileNames() {
       try {
-        const response = await fetch("/api/filenames", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ projectsList: projectsConfig }),
-        });
-        const data = await response.json();
-        initialProjectList.current = data;
-        setProjectsList(data);
+        // const response = await fetch("/api/filenames", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify({ projectsList: projectsConfig }),
+        // });
+        // const data = await response.json();
+        // initialProjectList.current = data;
+        // setProjectsList(projectsConfig);
       } catch (error) {
         console.error("Failed to fetch file names:", error);
       }
     }
-    if (selectedFilters.length === 0) {
-      fetchFileNames();
-    }
-  }, [selectedFilters]);
+    // if (selectedFilters.length === 0) {
+    //   fetchFileNames();
+    // }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("projectsList", JSON.stringify(projectsList));
   }, [projectsList]);
 
-  useEffect(() => {
-    const storedProjectsList = localStorage.getItem("projectsList");
-    if (storedProjectsList) {
-      setProjectsList(JSON.parse(storedProjectsList));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const storedProjectsList = localStorage.getItem("projectsList");
+  //   if (storedProjectsList) {
+  //     setProjectsList(JSON.parse(storedProjectsList));
+  //   }
+  // }, []);
 
   return (
     <>
